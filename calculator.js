@@ -3,7 +3,7 @@ class Calculator {
     this.tokenStream = this.lexer(inputString);
   }
   lexer(inputString) {
-    var  = this;
+    var makeESLintHappy = this;
     var result = [],
     tokenTypes =[
       ["NUMBER",    /^\d+/ ],
