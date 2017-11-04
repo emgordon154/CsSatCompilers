@@ -1,7 +1,7 @@
 class Calculator {
   constructor (inputString){
     this.tokenStream = this.lexer(inputString);
-  } 
+  }
   lexer(inputString) {
     var makeESLintHappy = this;
     var tokenStream = [],
@@ -14,22 +14,45 @@ class Calculator {
       ["LPAREN",    /^\(/  ],
       ["RPAREN",    /^\)/  ]
     ];
-    
+
     while(inputString.length) {
       tokenTypes.forEach(function(tokenType) {
         let [token, regEx] = [tokenType[0], tokenType[1]];
-        let match = regex.exec(inputString)
+        let match = regEx.exec(inputString)
         if (match) {
           tokenStream.push({'name': token, 'value': match[0]})
+          inputString = inputString.slice(match[0].length);
         };
       })
     }
 
     return tokenStream
   }
-} //1 + 2 * (3+4) => [1, +, 2, *, (, +, 4, )] 
 
+  peek(){
+    return this.tokenStream[0];
+  }
+  get(){
+    return this.tokenStream.shift();
+  }
+  parseExpression(){
+    var term = this.parseTerm(),
+    a = this.parseA();
+    return new TreeNode('Expression', term, a);
+  }
+  parseTerm(){
 
+  }
+  parseA(){
+
+  }
+}
+debugger;
+
+function TreeNode (name, ...children){
+  this.name = name;
+  this.children = children;
+}
 
 
 
