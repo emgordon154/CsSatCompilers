@@ -41,10 +41,14 @@ class Calculator {
     return new TreeNode('Expression', term, a);
   }
   parseTerm(){
-
+    
   }
   parseA(){
-
+    //let term = this.get();
+    let a = this.peek();
+    if (a.value == '+') return new TreeNode('ExpressionRemainder', , this.parseTerm(), this.parseA())
+    if (a.value == '-') return new TreeNode('ExpressionRemainder', , this.parseTerm(), this.parseA())
+    else
   }
 }
 debugger;
